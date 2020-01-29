@@ -1,0 +1,53 @@
+.gameName{
+    padding-top: 70px;
+    margin-bottom: 30px;
+}
+
+#mainTitle{
+    margin-bottom: 20px;
+}
+
+.numbersContainer{
+    position: absolute;
+    text-align: center;
+    background-color: gainsboro;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#timeInput{
+    width: 80px;
+}
+
+.timeLabel{
+    padding-right: 75px;
+}
+
+.easyLabel{
+    padding-right: 100px;
+}
+
+.medLabel{
+    padding-right: 20px;
+}
+
+.hardLabel{
+    padding-right: 100px;
+}
+
+.extLabel{
+    padding-right: 70px;
+}
+
+.btn{
+    margin-bottom: 100px;
+}
+
+#startGame{
+    margin-top: 50px;
+    width: 350px;
+}
+
+.formGroup{
+    width: 100px;
+}

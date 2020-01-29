@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Betamac</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "styles.css">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="gameName text-center">
+        <h1 id = "mainTitle"> Mental Maths Training</h1>
+        <h6>A simple mental maths game designed to help with trading applications</h6>
+    </div>
+    <form action="game.html" method="GET" class = "gameSettings text-center">
+      <div class = "timeLabel">
+        <label for="timeInput">Game time (seconds):</label>
+        <input id = "timeInput" type = "number" name = "gameDuration" value = "120" autofocus = autofocus/>
+      </div>
+        
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked/>
+          <label class="custom-control-label easyLabel" for="customRadio1">Easy ---- one digit numbers</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input"/>
+          <label class="custom-control-label medLabel" for="customRadio2">Medium ---- one and two digit numbers</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+          <label class="custom-control-label hardLabel" for="customRadio3">Hard ---- two digit numbers</label>
+        </div>
+        <!-- <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label vHardLabel" for="customRadio4">Very Hard ---- two and three digit numbers</label>
+          </div>        
+        <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label extLabel" for="customRadio5">Extreme ---- three digit numbers</label>
+          </div>                   -->
+        <input id = "startGame" class = "btn btn-primary" type="submit" value="Start game!"/>
+    </form>
+  </body>
+  <script src="game.js"></script>
+  <script src="timer.js"></script>
+</html>
+
+
