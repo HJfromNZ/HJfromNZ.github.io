@@ -2,35 +2,39 @@
 if(document.title == "Betamac"){
     document.getElementById("startGame").onclick = function(){
         if(document.getElementById("customRadio1").checked){
-            sessionStorage.setItem("maxNum", JSON.stringify(10));
-            sessionStorage.setItem("maxNum2", JSON.stringify(10));
+            sessionStorage.setItem("maxNum", JSON.stringify(9));
+            sessionStorage.setItem("maxNum2", JSON.stringify(9));
+            sessionStorage.setItem("minNum", JSON.stringify(1));
         }
         else if(document.getElementById("customRadio2").checked){
-            sessionStorage.setItem("maxNum", JSON.stringify(100));
-            sessionStorage.setItem("maxNum2", JSON.stringify(10));
+            sessionStorage.setItem("maxNum", JSON.stringify(90));
+            sessionStorage.setItem("maxNum2", JSON.stringify(9));
+            sessionStorage.setItem("minNum", JSON.stringify(1));
         }
         else{
-            sessionStorage.setItem("maxNum", JSON.stringify(100));
-            sessionStorage.setItem("maxNum2", JSON.stringify(100));
+            sessionStorage.setItem("maxNum", JSON.stringify(90));
+            sessionStorage.setItem("maxNum2", JSON.stringify(90));
+            sessionStorage.setItem("minNum", JSON.stringify(10));
         }
     }
 }
 else if(document.title == "Game"){
 
-    function randInt(top){
-        return Math.floor(Math.random()*top)+1;
+    function randInt(top, bottom){
+        return (Math.floor(Math.random()*top) + bottom);
     }
 
     var maxNum = Number(JSON.parse(sessionStorage.getItem("maxNum")));
     var maxNum2 = Number(JSON.parse(sessionStorage.getItem("maxNum2")));
+    var minNum = Number(JSON.parse(sessionStorage.getItem("minNum")));
 
-    var num1 = randInt(maxNum);
-    var num2 = randInt(maxNum2);
+    var num1 = randInt(maxNum, minNum);
+    var num2 = randInt(maxNum2, minNum);
 
     var operators = ["+", "-", "x", "/"];
-    var operator = randInt(4); //each operator corresponds to a number from 0-3
+    var operator = randInt(4, 1); //each operator corresponds to a number from 0-3
 
-    var positionGap = randInt(3); //each "gap" corresponds to a number from 0-2 (can make this more general, if user chooses how many numbers)
+    var positionGap = randInt(3, 0); //each "gap" corresponds to a number from 0-2 (can make this more general, if user chooses how many numbers)
 
     var questions = []; //questions
     var answers = []; //answers
@@ -38,11 +42,11 @@ else if(document.title == "Game"){
 
     function newQuestion(){
 
-        operator = randInt(4)-1;
+        operator = randInt(4, 1)-1;
         
         while(true){
-            num1 = randInt(maxNum);
-            num2 = randInt(maxNum2);
+            num1 = randInt(maxNum, minNum);
+            num2 = randInt(maxNum2, minNum);
 
             var numA = Math.max(num1, num2); //plain vanilla case: this prevents negatives and decimals
             var numB = Math.min(num1, num2);

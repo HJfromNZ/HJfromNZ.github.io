@@ -13,6 +13,12 @@
     background-color: gainsboro;
     margin: 0 auto;
     width: 100%;
+    margin-top: 100px;
+}
+
+.timer{
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 #timeInput{
