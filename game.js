@@ -51,6 +51,12 @@ else if(document.title == "Game"){
             var numA = Math.max(num1, num2); //plain vanilla case: this prevents negatives and decimals
             var numB = Math.min(num1, num2);
 
+            if (numA > 100) {
+                numA *= 10 * randInt(1, 9);
+            } else if (numB > 100) { 
+                numA *= 10 * randInt(1, 9);
+            }
+
             if(operator == 3){ //division
                 if(numA%numB==0 && numB != 1 && numA != numB){ //ensuring whole number division and removing uninteresting cases
                     break;
@@ -66,6 +72,7 @@ else if(document.title == "Game"){
                     break;
                 }
             }
+
         }
 
         questions.push(numA.toString() + " " +operators[operator]+ " " + numB.toString()+" =");
