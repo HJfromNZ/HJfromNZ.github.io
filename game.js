@@ -1,4 +1,5 @@
 //integer case
+
 if(document.title == "Betamac"){
     document.getElementById("startGame").onclick = function(){
         if(document.getElementById("customRadio1").checked){
@@ -8,8 +9,8 @@ if(document.title == "Betamac"){
         }
         else if(document.getElementById("customRadio2").checked){
             sessionStorage.setItem("maxNum", JSON.stringify(90));
-            sessionStorage.setItem("maxNum2", JSON.stringify(9));
-            sessionStorage.setItem("minNum", JSON.stringify(1));
+            sessionStorage.setItem("maxNum2", JSON.stringify(35));
+            sessionStorage.setItem("minNum", JSON.stringify(4));
         }
         else{
             sessionStorage.setItem("maxNum", JSON.stringify(90));
@@ -40,24 +41,23 @@ else if(document.title == "Game"){
     var answers = []; //answers
     var answersEntered = [];
 
-    function newQuestion(){
-
-        operator = randInt(4, 1)-1;
+    function newQuestion(operator){
         
         while(true){
             num1 = randInt(maxNum, minNum);
             num2 = randInt(maxNum2, minNum);
 
+            zeros = randInt(3, 1);
+
             var numA = Math.max(num1, num2); //plain vanilla case: this prevents negatives and decimals
             var numB = Math.min(num1, num2);
 
-            if (numA > 100) {
-                numA *= 10 * randInt(1, 9);
-            } else if (numB > 100) { 
-                numA *= 10 * randInt(1, 9);
+            if (minNum == 10 && operator >= 2 && zeros === 2) {
+                numA *= Math.pow(10, randInt(7, 3));
             }
+            
 
-            if(operator == 3){ //division
+            if(operator === 3){ //division
                 if(numA%numB==0 && numB != 1 && numA != numB){ //ensuring whole number division and removing uninteresting cases
                     break;
                 }
@@ -89,10 +89,14 @@ else if(document.title == "Game"){
         else{
             answers.push(numA/numB);
         }
+
     }
 
     var i = 0;
-    newQuestion();
+    operator = 0;
+    newQuestion(operator);
+    operator += 1;
+    operator %= 4;
     $("h1.numbers").text(questions[i]);
 
     document.addEventListener("keydown", function changeQuestion(ev){
@@ -101,7 +105,9 @@ else if(document.title == "Game"){
                 answersEntered.push(document.getElementById("answer").value);
                 document.getElementById("answer").value = "";
                 i++;
-                newQuestion(maxNum);
+                newQuestion(operator);
+                operator += 1;
+                operator %= 4;
                 $("h1.numbers").text(questions[i]);
             }
         }
